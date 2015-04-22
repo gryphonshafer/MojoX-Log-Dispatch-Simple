@@ -4,7 +4,7 @@ MojoX::Log::Dispatch::Simple - Simple Log::Dispatch replacement of Mojo::Log
 
 # VERSION
 
-version 1.01
+version 1.02
 
 [![Build Status](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple.svg)](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple)
 [![Coverage Status](https://coveralls.io/repos/gryphonshafer/MojoX-Log-Dispatch-Simple/badge.png)](https://coveralls.io/r/gryphonshafer/MojoX-Log-Dispatch-Simple)
@@ -59,14 +59,14 @@ single line of code.
         level    => 'debug'
     )->helpers($self) );
 
-The module makes absolutely no assumptions about how you want to use
-[Log::Dispatch](https://metacpan.org/pod/Log::Dispatch). In fact, it's entirely neutral about [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch). If you
-want to use a library that offers a similar interface, go for it.
+The module tries not to make any assumptions about how you want to use
+[Log::Dispatch](https://metacpan.org/pod/Log::Dispatch). In fact, you can if desired use an alternate [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch)
+library so long as it offers a similar interface.
 
 # PRIMARY METHODS
 
-These are methods that you would likely use from within your `startup()`
-subroutine:
+These are methods that you would likely use from within your [Mojolicious](https://metacpan.org/pod/Mojolicious)
+`startup()` subroutine.
 
 ## new
 
@@ -81,9 +81,11 @@ the log level for your [Mojolicious](https://metacpan.org/pod/Mojolicious) appli
     );
 
 Optionally, you can also provide a "format\_cb" value, which should be a
-reference to a subroutine that will be used to format entries that appear
-on the [Mojolicious](https://metacpan.org/pod/Mojolicious) error reporting web page. This formatting will have
-nothing at all to do with whatever your [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) does.
+reference to a subroutine that will be used to provide custom formatting to
+entries that appear on the [Mojolicious](https://metacpan.org/pod/Mojolicious) error reporting web page. This
+formatting will have nothing at all to do with whatever your [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch)
+does; it only formats log entries that appear on the [Mojolicious](https://metacpan.org/pod/Mojolicious) error
+reporting web page.
 
     my $mojo_logger = MojoX::Log::Dispatch::Simple->new(
         dispatch  => Log::Dispatch->new,
@@ -109,7 +111,13 @@ levels, or to a selection of them. This method requires that you pass in
 a reference to the [Mojolicious](https://metacpan.org/pod/Mojolicious) object. If that's all you pass in, the
 method will create a helper for every log level.
 
+    # from inside your startup()...
     $mojo_logger->helpers($mojo_obj);
+
+    # now later from inside a controller...
+    $c->debug('Debug message');
+
+    $c->app->log->debug("This is what you'd have to type without the helper");
 
 You can optionally pass in the names of the log levels you want helpers created
 for, and the method will only create methods for those levels.
@@ -118,25 +126,55 @@ for, and the method will only create methods for those levels.
 
 # LOG LEVELS
 
-Unfortunately, [Mojolicious](https://metacpan.org/pod/Mojolicious) and [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) have slightly different
-ideas as to what log levels should exist. This module supports all of them,
-because why not, right? Here's a list of the supported log levels, some with
-aliases.
+Unfortunately, [Mojolicious](https://metacpan.org/pod/Mojolicious) and [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) have somewhat different
+ideas as to what log levels should exist. Since this module is a bridge between
+them, it attempts to support all levels from both sides. That being said, when
+calling log levels in your application, you will probably want to only use
+the log levels from [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) if you use your [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) code
+in non-Mojo-app areas of your ecosystem, thus keeping things uniform everywhere.
 
-- debug
-- info
-- notice
-- warn, warning
-- error, err
-- critical, crit
-- alert
-- emergency, emerg, fatal
+For the purposes of understanding log levels relative to each other, all log
+levels are assigned a "rank" value. Since [Mojolicious](https://metacpan.org/pod/Mojolicious) has fewer levels than
+[Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) and there are 5 of them, a level's "rank" is an integer
+between 1 and 5.
 
-You can also test for log level by either just reading `$obj-`level> or by
-running an "is\_\*" method. For every log level listed above, there's a
-corresponding "is\_\*" method.
+## Log::Dispatch Log Levels
+
+The following are [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) log levels along with their corresponding
+"rank" integer and any supported aliases:
+
+- debug (1)
+- info (2)
+- notice (2)
+- warning, warn (3)
+- error, err (4)
+- critical, crit (4)
+- alert (5)
+- emergency, emerg (5)
+
+## Mojolicious Log Levels
+
+The following are [Mojolicious](https://metacpan.org/pod/Mojolicious) log levels along with their corresponding
+"rank" integer and any supported aliases:
+
+- debug (1)
+- info (2)
+- warn (3)
+- error (4)
+- fatal (5)
+
+You can check what log level you're set at by either just reading `$obj-`level>
+or by running an "is\_\*" method. For every log level, there's a corresponding
+"is\_\*" method.
 
     my $log_level_at_or_above_notice = $obj->is_notice;
+
+Note that this gets somewhat confusing when dealing with [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) log
+levels because from the perspective of [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch), the "notice" level is
+a unique level that's lower than a "warning" and higher than the "info" level.
+However, from the perspective of [Mojolicious](https://metacpan.org/pod/Mojolicious), there's no such log level.
+It will assume you're set at the "info" log level. Ergo, if you call
+`is_notice()` or `is_info()`, you'll get the same result.
 
 # POST-INSTANTIATION MEDDLING
 
@@ -152,6 +190,9 @@ manipulate various attributes, which are:
 So you can do things like:
 
     $obj->dispatch->remove('debug');
+
+This also means you can manipulate the log history. Why you'd ever want to do
+that, I can't say; but you can. Freedom is messy.
 
 # SEE ALSO
 
