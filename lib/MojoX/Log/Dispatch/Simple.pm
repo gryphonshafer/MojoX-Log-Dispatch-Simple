@@ -80,12 +80,12 @@ sub format {
 
 sub debug { shift->_log( 'debug',      @_ ) }
 sub info  { shift->_log( 'info',       @_ ) }
-sub warn  { shift->_log( 'warn',       @_ ) }
+sub warn  { shift->_log( 'warning',    @_ ) }
 sub error { shift->_log( 'error',      @_ ) }
 sub fatal { shift->_log( 'emergency',  @_ ) }
 
 sub notice    { shift->_log( 'notice',    @_ ) }
-sub warning   { shift->_log( 'warn',      @_ ) }
+sub warning   { shift->_log( 'warning',   @_ ) }
 sub critical  { shift->_log( 'critical',  @_ ) }
 sub alert     { shift->_log( 'alert',     @_ ) }
 sub emergency { shift->_log( 'emergency', @_ ) }
@@ -107,8 +107,8 @@ sub is_alert     { shift->_active_level('alert')     }
 sub is_emergency { shift->_active_level('emergency') }
 sub is_emerg     { shift->_active_level('emergency') }
 
-sub is_err  { shift->_active_level('error')    }
-sub is_crit { shift->_active_level('critical') }
+sub is_err  { shift->_active_level('err')  }
+sub is_crit { shift->_active_level('crit') }
 
 1;
 __END__ MojoX::Log::Dispatch::Simple MojoX-Log-Dispatch-Simple

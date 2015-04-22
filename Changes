@@ -1,6 +1,7 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+        - Fix to make "warnings" use Log::Dispatch goodness
 
 1.02      2015-04-22 07:32:54-07:00 America/Los_Angeles
         - Improved the POD a bit
