@@ -1,6 +1,8 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+
+1.02      2015-04-22 07:32:54-07:00 America/Los_Angeles
         - Improved the POD a bit
 
 1.01      2015-04-21 20:09:01-07:00 America/Los_Angeles
