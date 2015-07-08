@@ -31,7 +31,6 @@ sub new {
 
 sub _log {
     shift->emit( 'message', @_ );
-    return;
 }
 
 {
