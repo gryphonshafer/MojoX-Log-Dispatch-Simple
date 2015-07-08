@@ -1,6 +1,8 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+
+1.05      2015-07-08 06:41:19-07:00 America/Los_Angeles
         - Fix for silly POD bug
 
 1.04      2015-07-08 06:37:29-07:00 America/Los_Angeles
