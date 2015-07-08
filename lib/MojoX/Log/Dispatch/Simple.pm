@@ -328,4 +328,11 @@ You can also look for additional information at:
 
 =for Pod::Coverage alert crit critical debug emerg emergency err fatal format info is_alert is_crit is_critical is_debug is_emerg is_emergency is_err is_error is_fatal is_info is_notice is_warn is_warning notice warn warning
 
+=head1 GRATITUDE
+
+Special thanks to the following for contributing to this module:
+
+=for :list
+*Tomohiro Hosaka
+
 =cut
