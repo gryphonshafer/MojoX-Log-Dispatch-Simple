@@ -333,6 +333,6 @@ You can also look for additional information at:
 Special thanks to the following for contributing to this module:
 
 =for :list
-*Tomohiro Hosaka
+* Tomohiro Hosaka
 
 =cut
