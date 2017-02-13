@@ -1,6 +1,7 @@
 package MojoX::Log::Dispatch::Simple;
 # ABSTRACT: Simple Log::Dispatch replacement of Mojo::Log
 
+use 5.010;
 use strict;
 use warnings;
 
