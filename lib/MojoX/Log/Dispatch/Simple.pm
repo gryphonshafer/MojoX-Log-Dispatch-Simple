@@ -31,7 +31,8 @@ sub new {
 }
 
 sub _log {
-    shift->emit( 'message', @_ );
+    my ( $self, $level, @input ) = @_;
+    $self->emit( 'message', $level, ref $input[0] eq 'CODE' ? $input[0]() : @input );
 }
 
 {
