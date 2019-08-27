@@ -1,6 +1,7 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+        - Update Travis YAML
 
 1.06      2019-02-04 17:08:39-08:00 America/Los_Angeles
         - Handle log being passed a coderef (as Mojolicious now does)
