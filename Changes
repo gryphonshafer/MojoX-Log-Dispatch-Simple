@@ -1,6 +1,8 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+        - Add context() so to support the expectation of Mojolicious 8.24 for
+          the experimental feature to exist
         - Update Travis YAML
 
 1.06      2019-02-04 17:08:39-08:00 America/Los_Angeles

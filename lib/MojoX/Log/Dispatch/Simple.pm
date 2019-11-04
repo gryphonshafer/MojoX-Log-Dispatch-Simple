@@ -15,6 +15,8 @@ has level            => 'debug';
 has max_history_size => 10;
 has dispatch         => undef;
 has format_cb        => undef;
+has parent           => undef;
+has context          => undef;
 
 sub new {
     my $self = shift->SUPER::new(@_);
@@ -72,6 +74,11 @@ sub _log {
 
         return $self;
     }
+}
+
+sub context {
+    my ( $self, $str ) = @_;
+    return $self->new( parent => $self, context => $str, level => $self->level );
 }
 
 sub format {
