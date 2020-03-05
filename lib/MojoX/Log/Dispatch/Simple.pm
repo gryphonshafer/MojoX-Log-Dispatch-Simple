@@ -327,9 +327,7 @@ You can also look for additional information at:
 
 =for :list
 * L<GitHub|https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple>
-* L<CPAN|http://search.cpan.org/dist/MojoX-Log-Dispatch-Simple>
 * L<MetaCPAN|https://metacpan.org/pod/MojoX::Log::Dispatch::Simple>
-* L<AnnoCPAN|http://annocpan.org/dist/MojoX-Log-Dispatch-Simple>
 * L<Travis CI|https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple>
 * L<Coveralls|https://coveralls.io/r/gryphonshafer/MojoX-Log-Dispatch-Simple>
 * L<CPANTS|http://cpants.cpanauthors.org/dist/MojoX-Log-Dispatch-Simple>
