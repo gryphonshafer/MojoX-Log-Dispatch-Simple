@@ -126,8 +126,8 @@ __END__ MojoX::Log::Dispatch::Simple MojoX-Log-Dispatch-Simple
 =begin :badges
 
 =for markdown
-[![Build Status](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple.svg)](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple)
-[![Coverage Status](https://coveralls.io/repos/gryphonshafer/MojoX-Log-Dispatch-Simple/badge.png)](https://coveralls.io/r/gryphonshafer/MojoX-Log-Dispatch-Simple)
+[![build](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/workflows/build/badge.svg)](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/actions?query=workflow%3Abuild)
+[![codecov](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple/graph/badge.svg)](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple)
 
 =end :badges
 
@@ -328,8 +328,8 @@ You can also look for additional information at:
 =for :list
 * L<GitHub|https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple>
 * L<MetaCPAN|https://metacpan.org/pod/MojoX::Log::Dispatch::Simple>
-* L<Travis CI|https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple>
-* L<Coveralls|https://coveralls.io/r/gryphonshafer/MojoX-Log-Dispatch-Simple>
+* L<GitHub Actions|https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/actions>
+* L<Codecov|https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple>
 * L<CPANTS|http://cpants.cpanauthors.org/dist/MojoX-Log-Dispatch-Simple>
 * L<CPAN Testers|http://www.cpantesters.org/distro/M/MojoX-Log-Dispatch-Simple.html>
 
