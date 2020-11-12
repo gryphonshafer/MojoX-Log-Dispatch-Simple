@@ -4,10 +4,10 @@ MojoX::Log::Dispatch::Simple - Simple Log::Dispatch replacement of Mojo::Log
 
 # VERSION
 
-version 1.07
+version 1.08
 
-[![Build Status](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple.svg)](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple)
-[![Coverage Status](https://coveralls.io/repos/gryphonshafer/MojoX-Log-Dispatch-Simple/badge.png)](https://coveralls.io/r/gryphonshafer/MojoX-Log-Dispatch-Simple)
+[![build](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/workflows/build/badge.svg)](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/actions?query=workflow%3Abuild)
+[![codecov](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple/graph/badge.svg)](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple)
 
 # SYNOPSIS
 
@@ -48,8 +48,8 @@ version 1.07
 
 # DESCRIPTION
 
-This module provides a really simple way to replace the built-in [Mojo::Log](https://metacpan.org/pod/Mojo::Log)
-with a [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) object, and yet still support all the [Mojo::Log](https://metacpan.org/pod/Mojo::Log)
+This module provides a really simple way to replace the built-in [Mojo::Log](https://metacpan.org/pod/Mojo%3A%3ALog)
+with a [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) object, and yet still support all the [Mojo::Log](https://metacpan.org/pod/Mojo%3A%3ALog)
 log levels and other functionality [Mojolicious](https://metacpan.org/pod/Mojolicious) assumes exists. To make it
 even easier, you can install helpers to all the log levels, all from the same
 single line of code.
@@ -60,7 +60,7 @@ single line of code.
     )->helpers($self) );
 
 The module tries not to make any assumptions about how you want to use
-[Log::Dispatch](https://metacpan.org/pod/Log::Dispatch). In fact, you can if desired use an alternate [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch)
+[Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch). In fact, you can if desired use an alternate [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch)
 library so long as it offers a similar interface.
 
 # PRIMARY METHODS
@@ -71,7 +71,7 @@ These are methods that you would likely use from within your [Mojolicious](https
 ## new
 
 This method instantiates an object. It requires a "dispatch" parameter, which
-should be a [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) object (or an object with a similar signature).
+should be a [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) object (or an object with a similar signature).
 The method allow accepts an optional "level" parameter, which is used to set
 the log level for your [Mojolicious](https://metacpan.org/pod/Mojolicious) application.
 
@@ -83,7 +83,7 @@ the log level for your [Mojolicious](https://metacpan.org/pod/Mojolicious) appli
 Optionally, you can also provide a "format\_cb" value, which should be a
 reference to a subroutine that will be used to provide custom formatting to
 entries that appear on the [Mojolicious](https://metacpan.org/pod/Mojolicious) error reporting web page. This
-formatting will have nothing at all to do with whatever your [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch)
+formatting will have nothing at all to do with whatever your [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch)
 does; it only formats log entries that appear on the [Mojolicious](https://metacpan.org/pod/Mojolicious) error
 reporting web page.
 
@@ -126,21 +126,21 @@ for, and the method will only create methods for those levels.
 
 # LOG LEVELS
 
-Unfortunately, [Mojolicious](https://metacpan.org/pod/Mojolicious) and [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) have somewhat different
+Unfortunately, [Mojolicious](https://metacpan.org/pod/Mojolicious) and [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) have somewhat different
 ideas as to what log levels should exist. Since this module is a bridge between
 them, it attempts to support all levels from both sides. That being said, when
 calling log levels in your application, you will probably want to only use
-the log levels from [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) if you use your [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) code
+the log levels from [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) if you use your [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) code
 in non-Mojo-app areas of your ecosystem, thus keeping things uniform everywhere.
 
 For the purposes of understanding log levels relative to each other, all log
 levels are assigned a "rank" value. Since [Mojolicious](https://metacpan.org/pod/Mojolicious) has fewer levels than
-[Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) and there are 5 of them, a level's "rank" is an integer
+[Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) and there are 5 of them, a level's "rank" is an integer
 between 1 and 5.
 
 ## Log::Dispatch Log Levels
 
-The following are [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) log levels along with their corresponding
+The following are [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) log levels along with their corresponding
 "rank" integer and any supported aliases:
 
 - debug (1)
@@ -169,8 +169,8 @@ or by running an "is\_\*" method. For every log level, there's a corresponding
 
     my $log_level_at_or_above_notice = $obj->is_notice;
 
-Note that this gets somewhat confusing when dealing with [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) log
-levels because from the perspective of [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch), the "notice" level is
+Note that this gets somewhat confusing when dealing with [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) log
+levels because from the perspective of [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch), the "notice" level is
 a unique level that's lower than a "warning" and higher than the "info" level.
 However, from the perspective of [Mojolicious](https://metacpan.org/pod/Mojolicious), there's no such log level.
 It will assume you're set at the "info" log level. Ergo, if you call
@@ -181,7 +181,7 @@ It will assume you're set at the "info" log level. Ergo, if you call
 Following the creation of the object from this library, you can still
 manipulate various attributes, which are:
 
-- dispatch (a [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch) object)
+- dispatch (a [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch) object)
 - level
 - max\_history\_size
 - format\_cb (a subref)
@@ -196,16 +196,14 @@ that, I can't say; but you can. Freedom is messy.
 
 # SEE ALSO
 
-[Mojolicious](https://metacpan.org/pod/Mojolicious), [Log::Dispatch](https://metacpan.org/pod/Log::Dispatch).
+[Mojolicious](https://metacpan.org/pod/Mojolicious), [Log::Dispatch](https://metacpan.org/pod/Log%3A%3ADispatch).
 
 You can also look for additional information at:
 
 - [GitHub](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple)
-- [CPAN](http://search.cpan.org/dist/MojoX-Log-Dispatch-Simple)
 - [MetaCPAN](https://metacpan.org/pod/MojoX::Log::Dispatch::Simple)
-- [AnnoCPAN](http://annocpan.org/dist/MojoX-Log-Dispatch-Simple)
-- [Travis CI](https://travis-ci.org/gryphonshafer/MojoX-Log-Dispatch-Simple)
-- [Coveralls](https://coveralls.io/r/gryphonshafer/MojoX-Log-Dispatch-Simple)
+- [GitHub Actions](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/actions)
+- [Codecov](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple)
 - [CPANTS](http://cpants.cpanauthors.org/dist/MojoX-Log-Dispatch-Simple)
 - [CPAN Testers](http://www.cpantesters.org/distro/M/MojoX-Log-Dispatch-Simple.html)
 
@@ -221,7 +219,7 @@ Gryphon Shafer <gryphon@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2018 by Gryphon Shafer.
+This software is copyright (c) 2021 by Gryphon Shafer.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
