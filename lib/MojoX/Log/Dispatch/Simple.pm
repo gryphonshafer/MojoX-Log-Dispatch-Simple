@@ -126,7 +126,7 @@ __END__ MojoX::Log::Dispatch::Simple MojoX-Log-Dispatch-Simple
 =begin :badges
 
 =for markdown
-[![build](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/workflows/build/badge.svg)](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/actions?query=workflow%3Abuild)
+[![test](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/workflows/test/badge.svg)](https://github.com/gryphonshafer/MojoX-Log-Dispatch-Simple/actions?query=workflow%3Atest)
 [![codecov](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple/graph/badge.svg)](https://codecov.io/gh/gryphonshafer/MojoX-Log-Dispatch-Simple)
 
 =end :badges
