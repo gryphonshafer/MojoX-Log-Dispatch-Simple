@@ -13,7 +13,7 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => 0
   },
   "DISTNAME" => "MojoX-Log-Dispatch-Simple",
-  "LICENSE" => "perl",
+  "LICENSE" => "artistic_2",
   "MIN_PERL_VERSION" => "5.010",
   "NAME" => "MojoX::Log::Dispatch::Simple",
   "PREREQ_PM" => {
