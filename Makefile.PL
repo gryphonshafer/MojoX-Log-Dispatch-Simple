@@ -27,8 +27,8 @@ my %WriteMakefileArgs = (
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
     "Log::Dispatch" => 0,
-    "Test::More" => 0,
-    "Test::Most" => 0
+    "Test2::V0" => 0,
+    "Test::More" => 0
   },
   "VERSION" => "1.08",
   "test" => {
@@ -44,8 +44,8 @@ my %FallbackPrereqs = (
   "Log::Dispatch" => 0,
   "Mojo::Base" => 0,
   "Mojo::Util" => 0,
+  "Test2::V0" => 0,
   "Test::More" => 0,
-  "Test::Most" => 0,
   "strict" => 0,
   "warnings" => 0
 );
