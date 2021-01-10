@@ -1,6 +1,8 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+
+1.08      2021-01-10 14:35:05-08:00 America/Los_Angeles
         - Migrate to Test2::V0
         - Improve .gitignore file
         - License migrate to Artistic 2.0
