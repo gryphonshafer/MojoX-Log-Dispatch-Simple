@@ -34,7 +34,7 @@ sub new {
         push( @{ $self->history }, [ time, $level, @_ ] );
         shift @{ $self->history } while ( @{ $self->history } > $self->max_history_size );
 
-        $self->dispatch->log( level => $level, message => encode( 'UTF-8', $_ ) ) for (@_);
+        $self->parent->dispatch->log( level => $level, message => encode( 'UTF-8', $_ ) ) for (@_);
     } );
     return $self;
 }
