@@ -36,7 +36,7 @@ sub new {
 
         ( $self->parent // $self )->dispatch->log(
             level   => $level,
-            message => encode( 'UTF-8', $_ ),
+            message => $_,
         ) for (@_);
     } );
     return $self;
