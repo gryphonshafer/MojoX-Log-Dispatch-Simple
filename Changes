@@ -1,6 +1,7 @@
 Revision history for MojoX::Log::Dispatch::Simple
 
 {{$NEXT}}
+        - Add security policy as per CPANSec recommendation
 
 1.14      2025-03-27 15:43:26-07:00 America/Los_Angeles
         - Removed forced UTF-8 encoding; encoding now up to client
